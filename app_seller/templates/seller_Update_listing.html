@@ -1,0 +1,92 @@
+{% extends 'seller_hedder_futter.html' %}
+{% block content%}   
+{% load static %}
+    <div class="container-fluid pt-">
+        <div class="row px-xl-0">
+            <div class="col-lg-7 m-auto mb-">
+                <div class="mb-4">
+                    <div class="container-fluid pt-">
+                        
+                    <p style="font-size:48;color:red">{{msg}}</p>
+                    <form action="{% url 'Seller_update_listing' one_data.id %}" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <h2 class="font-weight-semi-bold mb-4"> Listing</h2>
+                    <div class="row">   
+                        <div class="col-md-8 form-group">
+                            <input type="file" name="Listing_immage" placeholder="select immage" value={{one_data.Listing_immage}}>
+                         </div> 
+                        <!-- </div>
+                           <div class="col-md-8 form-group">
+                            <input class="form-control" type="file" name="propic"  placeholder="immage">
+                        </div> -->
+                   
+                           <div class="col-md-8 form-group">
+                            <label>Product name</label>
+                            <input class="form-control" type="text" name="P_name"  placeholder="productname" value={{one_data.P_name}}>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <label>Product price</label>
+                            <input class="form-control" type="number" name="P_Price"  placeholder="Product Prise" value={{one_data.P_Price}}>
+                        </div>
+
+                        <div class="col-md-8 form-group">
+                            <label>Product sellprice</label>
+                            <input class="form-control" type="number" name="P_sellprice"  placeholder="Product sellprice" value={{one_data.P_sellprice}}>
+                        </div>
+                        {% comment %} <div class="col-md-8 form-group">
+                            <label>Product color</label>
+                            <input class="form-control" type="text" name="P_Color" placeholder="Product color" value={{one_data.P_Color}}>
+                        </div> {% endcomment %}
+                        <div class="col-md-8 form-group">
+                            {% for i in color %}
+                                <input class="form-control" type="checkbox" id="size_{{ i.id }}" name="P_Color" placeholder="Product color" value={{i.0}} {% if i.0 in list_color %} checked{% endif %}>{{i.1}}
+                                {% endfor %}    
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <label>Product Quntity</label>
+                            <input class="form-control" type="number" name="P_Quntity" placeholder="product Quntity" value={{one_data.P_Quntity}}>
+                        </div>
+                        
+                        <div class="col-md-8 form-group">
+                            {% for i in size %}
+                                <input class="form-control" type="checkbox" id="size_{{ i.id }}" name="P_size" placeholder="Product size" value={{i.0}} {% if i.0 in list_size %} checked{% endif %}>{{i.1}}
+                                {% endfor %}    
+                        </div>
+                        
+                        <div class="col-md-8 form-group">
+                            <label> Product Description</label>
+                            <textarea name="P_Description"  name="P_Description" cols="30" rows="10" value={{one_data.P_Description}}></textarea>
+                            <!-- <input class="form-control" type="text" name="P_Description" placeholder="Product Description"> -->
+                        </div>
+                        
+                        <div>
+                        <button></a><input class="btn btn-primary" type="text" value="Update" name="Update">
+                        </button>
+                        </div>
+                       
+                  \
+                        
+      
+                    </div>
+                    </form>
+                        
+                        
+                        </div>
+                    </div>
+                </div>
+               
+                    </div>
+                </div>
+            </div>
+            
+                        </div>
+                     
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Checkout End -->
+{% endblock %}

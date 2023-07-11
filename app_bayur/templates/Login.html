@@ -1,0 +1,57 @@
+{% extends 'hedder_futter.html' %}
+{%block content%}   
+ {% load static %}
+    <div class="container-fluid pt-">
+        <div class="row px-xl-0">
+            <div class="col-lg-7 m-auto mb-">
+                <div class="mb-4">
+                    <div class="container-fluid pt-">
+       
+                    <p style="font-size:48;color:red">{{msg}}  <br>  {{msg2}}</p>
+                    <form action="{% url 'Login' %}" method="Post" >
+                      {% csrf_token %}
+                    <h2 class="font-weight-semi-bold mb-4">Login</h2>
+                    <div class="row">
+                           <div class="col-md-8 form-group">
+                            <label>firstname</label>
+                            <input class="form-control" type="text" name="firstname" placeholder="firstname" >
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" type="text" name="email" placeholder="example@email.com">
+                        </div>
+                        
+                        <div class="col-md-8 form-group">
+                            <label>Password</label>
+                            <input class="form-control" type="Password" name="password" placeholder="your  registration password">
+                        </div>
+                        
+                           <div class="col-md-8 form-group text-center">
+                            <a href="{% url 'Register' %}"> New User ? Register here</a>
+                        </div>
+                            <div class="col-md-8 form-group text-center">
+                            <input class="btn btn-primary" type="Submit" value="Login" name="sing in">
+                            </div>
+                    </div>
+                    </form>
+                        
+                        
+                        </div>
+                    </div>
+                </div>
+               
+                    </div>
+                </div>
+            </div>
+            
+                        </div>
+                     
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Checkout End -->
+{% endblock %}

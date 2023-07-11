@@ -1,0 +1,72 @@
+{% extends 'seller_hedder_futter.html' %}
+{% block content%}   
+ {% load static %}
+    <div class="container-fluid pt-">
+        <div class="row px-xl-0">
+            <div class="col-lg-7 m-auto mb-">
+                <div class="mb-4">
+                    <div class="container-fluid pt-">
+       
+                    <p style="font-size:48;color:red">{{msg}}</p>
+                    <form action="{% url 'seller_profile' %}" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <h2 class="font-weight-semi-bold mb-4">User Profile</h2>
+                    <div class="row">   
+                        <div class="col-md-8 form-group">
+                           <img width="150px" height="150px"  src="{{Seller_indata.propic.url}}" style="margin-left: 200px; border-radius: 75px;">
+                        </div>
+                           <div class="col-md-8 form-group">
+                            <input class="form-control" type="file" name="propic"  placeholder="immage">
+                        </div>
+                           <div class="col-md-8 form-group">
+                            <label>firstname</label>
+                            <input class="form-control" type="text" name="firstname"  placeholder="firstname" value={{Seller_indata.firstname}}>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" type="text" name="email"  disabled placeholder="example@email.com" value={{Seller_indata.email}}>
+                        </div>
+                        
+                        <div class="col-md-8 form-group">
+                            <label>Password</label>
+                            <input class="form-control" type="Password" name="Old_password" placeholder="your  registration Old password">
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <label>Password</label>
+                            <input class="form-control" type="Password" name="new_password" placeholder="your  new_password">
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <label> Canform Password</label>
+                            <input class="form-control" type="Password" name="Canform_new_Password" placeholder="your Canform Password">
+                        </div>
+                        
+                        
+                           {% comment %} <div class="col-md-8 form-group text-center">
+                            <a href="{% url 'Register' %}"> New User ? Register here</a>
+                        </div> {% endcomment %}
+                            <div class="col-md-8 form-group text-center">
+                            <input class="btn btn-primary" type="Submit" value="Update profile" name="update">
+                            </div>
+                    </div>
+                    </form>
+                        
+                        
+                        </div>
+                    </div>
+                </div>
+               
+                    </div>
+                </div>
+            </div>
+            
+                        </div>
+                     
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Checkout End -->
+{% endblock %}

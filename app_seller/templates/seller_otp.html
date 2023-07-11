@@ -1,0 +1,50 @@
+{% extends 'seller_hedder_futter.html' %}
+{%block content%}   
+ {% load static %}
+    <!-- Checkout Start -->
+
+    <div class="container-fluid pt-">
+        <div class="row px-xl-5">
+            <div class="col-lg-8">
+                <div class="mb-4">
+                    
+                       <p style="font: size 24px,color=red;">{{msg}}</p>
+                       
+                    <form action="{% url 'seller_otp' %}" method="post" name="registration Form">
+                        {% csrf_token %}
+                        
+                        <h4 class="font-weight-semi-bold mb-4">OTP Varify</h4>
+                        <div class="row">
+
+                            <div class="col-md-6 form-group">
+                                <label>otp</label>
+                                <input class="form-control" type="text" name="otp" placeholder="Enter otp">
+                            </div>
+                            <button ></a><input class="btn btn-primary" type="Submit" value="verify" name="verify"></button>
+                            {% comment %} <button ></a> <a href="{% url 'Recent'%}"></a><input class="btn btn-primary" type="Submit" value="Recent" name="Recent"></button>    {% endcomment %}
+                    </div> 
+           </a> 
+                </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+
+    </div>
+
+    </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- Checkout End -->
+{% endblock %}
+    <!-- Footer Start -->

@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Errer Page</title>
+</head>
+
+<body>
+    <h1 style="padding:30px; color: chocolate; "> you are clicking on wrong page you need to Login first </h1>
+    <button style="background-color: rgb(222, 135, 192); text-align: center; ">
+        <a href="{% url 'Login' %}"><input class="btn btn-primary" type="button" value="Login" name="Login"></a>
+    </button>
+   <center><img style="height: 600px; width: 1200px;" class="img -fluid" src="{% static 'img/errr.jpg'%}" alt="Image"></center> 
+
+</body>
+</html>

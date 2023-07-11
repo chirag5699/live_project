@@ -1,0 +1,78 @@
+{% extends 'seller_hedder_futter.html' %}
+{%block content%}   
+ {% load static %}
+
+    <!-- Page Header Start -->
+    <div class="container-fluid bg-secondary mb-0">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 50px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-"><b>registration</b> </h1>
+
+        </div>
+    </div>
+
+
+    <div class="container-fluid pt-">
+        <div class="row px-xl-5">
+            <div class="col-lg-7 m-auto mb-">
+                <div class="contact-form">
+
+                   <!-- from start -->
+                   <p style="font-size:48;color:red;">{{msg}} <br> {{msg2}}</p>
+                    
+                   <form action="{% url 'seller_Register' %}" method="Post" name="Registration Form"> 
+                 {% csrf_token %}
+                        <center><hr><h6> Enter your Details</h6> </center>
+                        <hr>
+                    <center>
+                        
+                            <div class="col-md-8 form-group text-left">
+                                <label>First name</label>
+                                <input class="form-control" type="text" name="firstname" placeholder="first name">
+                            </div>
+                            <div class="col-md-8 form-group text-left">
+                                <label>E-mail</label>
+                                <input class="form-control" type="text" name="email" placeholder="example@email.com">
+                            </div>
+                            <div class="col-md-8 form-group text-left">
+                                <label>Mobile No</label>
+                                <input class="form-control" type="number" name="Mobile_No" placeholder="+91 **********">
+                            </div>
+                            <div class="col-md-8 form-group text-left">
+                                <label>Password</label>
+                                <input class="form-control" type="Password" name="password" placeholder="your password">
+                            </div>
+                            <div class="col-md-8 form-group text-left">
+                                <label>confirm password</label>
+                                <input class="form-control" type="password" name="Cpassword" placeholder="0000">
+                                <br>
+                                <div>
+                                <a href="{% url 'seller_Login' %}"> Alreday ragistred ? Login here</a>
+                                <br>
+                                <br>
+                             <button></a><input class="btn btn-primary" type="Submit" value="sing up" name="submit"></button>
+
+                             
+                             </a>
+                            
+                    </form>
+                </center>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+
+    </div>
+
+    </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- Checkout End -->
+{% endblock %}

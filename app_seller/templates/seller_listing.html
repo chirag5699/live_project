@@ -1,0 +1,97 @@
+{% extends 'seller_hedder_futter.html' %}
+{% block content%}   
+ {% load static %}
+    <div class="container-fluid pt-">
+        <div class="row px-xl-0">
+            <div class="col-lg-7 m-auto mb-">
+                <div class="mb-4">
+                    <div class="container-fluid pt-">
+       
+                    <p style="font-size:48;color:red">{{msg}}</p>
+                    <form action="{% url 'seller_listing' %}" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <h2 class="font-weight-semi-bold mb-4">Listing</h2>
+                    <div class="row">   
+                        <div class="col-md-8 form-group">
+                            <input type="file" name="Listing_immage" placeholder="select immage">
+                         </div> 
+                        <!-- </div>
+                           <div class="col-md-8 form-group">
+                            <input class="form-control" type="file" name="propic"  placeholder="immage">
+                        </div> -->
+                        {% comment %} <div class="col-md-8 form-group">
+                            <label>Product id</label>
+                            <input class="form-control" type="number" name="P_id"  placeholder="productid" >
+                        </div> {% endcomment %}
+                           <div class="col-md-8 form-group">
+                            <label>Product name</label>
+                            <input class="form-control" type="text" name="P_name"  placeholder="productname" >
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <label>Product price</label>
+                            <input class="form-control" type="number" name="P_Price"  placeholder="Product Prise">
+                        </div>
+
+                       <div class="col-md-8 form-group">
+                            <label>Product sellprice</label>
+                            <input class="form-control" type="number" name="P_sellprice"  placeholder="Product sellprice">
+                        </div>
+                        {% comment %} <div class="col-md-8 form-group">
+                            <label>Product color</label>
+                            <input class="form-control" type="text" name="P_Color" placeholder="Product color">
+                        </div> {% endcomment %}
+
+                        <div class="col-md-8 form-group">
+                            {% for i in color %}
+                            <input class="form-control" type="checkbox" name="P_Color" placeholder="Product color" value={{i.0}}>{{i.1}} 
+                            {% endfor %}
+                        </div>    
+
+                        <div class="col-md-8 form-group">
+                            <label>Product Quntity</label>
+                            <input class="form-control" type="number" name="P_Quntity" placeholder="product Quntity">
+                        </div>
+
+                        <div class="col-md-8 form-group">
+                            <label> Product Description</label>
+                            <textarea name="P_Description"  name="P_Description" cols="30" rows="10"></textarea>
+                            
+                            <div class="col-md-8 form-group">
+                                {% for i in size %}
+                                <input class="form-control" type="checkbox" name="P_size" placeholder="Product size" value={{i.0}}>{{i.1}} 
+                                {% endfor %}
+                            </div>
+
+                            <!-- <input class="form-control" type="text" name="P_Description" placeholder="Product Description"> -->
+                        </div>
+                        <div>
+                        <button></a><input class="btn btn-primary" type="text" value="submit" name="submit">
+                        </button>
+                        </div>
+                       
+           
+                        
+      
+                    </div>
+                    </form>
+                        
+                        
+                        </div>
+                    </div>
+                </div>
+               
+                    </div>
+                </div>
+            </div>
+            
+                        </div>
+                     
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Checkout End -->
+{% endblock %}
