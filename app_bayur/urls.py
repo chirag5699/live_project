@@ -15,12 +15,18 @@ urlpatterns = [
    path('Add_To_Cart/<int:ck>',views.Add_To_Cart, name='Add_To_Cart'),
    path('Show_cart',views.Show_cart, name='Show_cart'),
    path('Error',views.Error, name='Error'),
+   path('Search_for_products',views.Search_for_products, name='Search_for_products'),
    path('Remove_cart/<int:ck>',views.Remove_cart, name='Remove_cart'),
    path('Update_cart/',views.Update_cart, name='Update_cart'),
    path('continue_shoping/',views.continue_shoping, name='continue_shoping'),
    path('checkout/',views.checkout, name='checkout'),
-   path('paymenthandler/', views.paymenthandler, name='paymenthandler'),
-
+   path('payment/paymenthandler/', views.paymenthandler, name='paymenthandler'),
+   path('checkoutdetail/', views.checkoutdetail, name='checkoutdetail'),
+   path('payment/', views.payment, name='payment'),
+   path('Categary/<str:ck>', views.Categary, name='Categary'),
+   path('API/', views.API, name='API'),
+   path('previous_order/', views.previous_order, name='previous_order'),
+   path('contact/', views.contact, name='contact'),
    
 
 

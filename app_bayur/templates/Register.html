@@ -1,4 +1,4 @@
-{% extends 'hedder_futter.html' %}
+{% extends '2hedder_futter.html' %}
 {%block content%}   
  {% load static %}
 
@@ -17,8 +17,8 @@
                 <div class="contact-form">
 
                    <!-- from start -->
-                   <p style="font-size:48;color:red;">{{msg}} <br> {{msg2}}</p>
-                    
+                   {% comment %} <p style="font-size:48;color:red;">{{msg}} <br> {{msg2}}</p> {% endcomment %}
+                    <p >{{massage}}</p>
                    <form action="{% url 'Register' %}" method="Post" name="Registration Form"> 
                  {% csrf_token %}
                         <center><hr><h6> Enter your Details</h6> </center>

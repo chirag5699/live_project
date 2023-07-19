@@ -13,6 +13,12 @@ urlpatterns = [
     path('seller_listing_Table/', views.seller_listing_Table, name='seller_listing_Table'),
     path('Seller_update_listing/<int:ck>/', views.Seller_update_listing, name='Seller_update_listing'),
     path('Seller_delete_listing/<int:ck>/', views.Seller_delete_listing, name='Seller_delete_listing'),
+    path('seller_order/', views.seller_order, name='seller_order'),
+    path('Accepte/<int:ck>', views.Accepte, name='Accepte'),
+    path('Cencel/<int:ck>', views.Cencel, name='Cencel'),
+    path('seller_Payment/', views.seller_Payment, name='seller_Payment'),
+    
+    
     
    
 ]

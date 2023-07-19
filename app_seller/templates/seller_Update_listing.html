@@ -52,7 +52,10 @@
                                 <input class="form-control" type="checkbox" id="size_{{ i.id }}" name="P_size" placeholder="Product size" value={{i.0}} {% if i.0 in list_size %} checked{% endif %}>{{i.1}}
                                 {% endfor %}    
                         </div>
-                        
+                        <div class="col-md-8 form-group">
+                            <label>Categary</label>
+                            <input class="form-control" type="text" name="P_Categary" placeholder="product categary" value={{one_data.P_Categary}}>
+                        </div>
                         <div class="col-md-8 form-group">
                             <label> Product Description</label>
                             <textarea name="P_Description"  name="P_Description" cols="30" rows="10" value={{one_data.P_Description}}></textarea>

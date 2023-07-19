@@ -1,0 +1,75 @@
+{% extends '2hedder_futter.html' %}
+{%block content%}   
+{% load static %}
+
+    <!-- Page Header Start -->
+    <div class="container-fluid bg-secondary mb-5">
+      <div
+        class="d-flex flex-column align-items-center justify-content-center"
+        style="min-height: 300px"
+      >
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">previous_order</h1>
+        <div class="d-inline-flex">
+          <p class="m-0"><a href="">Home</a></p>
+          <p class="m-0 px-2">-</p>
+          <p class="m-0">previous_order</p>
+        </div>
+      </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Cart Start -->
+    <form action="{% url 'Update_cart' %}" method="post">
+      {% csrf_token %}
+    <div class="container-fluid pt-5">
+      <div class="row px-xl-5">
+        <div class="col-lg-8 table-responsive mb-5">
+          <table class="table table-bordered text-center mb-0">
+            <thead class="bg-secondary text-dark">
+              <tr>
+                <th>image</th>
+                <th>Products</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                
+              </tr>
+            </thead>
+            <tbody class="align-middle">
+              {% for i in all_cart %}
+              <tr>
+                <td class="align-right" style="height: 10%; width:10% ;">
+                  <img src="{{i.Product_id.Listing_immage.url}}" alt="" style="width: 70px" />
+                  <!-- <span>{{ i.Product_id.P_name }}</span> -->
+                </td>
+                <td class="align-middle" > {{ i.Product_id.P_name }}</td>
+                <td class="align-middle">${{i.Product_id.P_Price}}</td>
+                <td class="align-middle">
+                  <div
+                    class="input-group quantity mx-auto"
+                    style="width: 100px"
+                    >
+                    
+                    
+                    <input
+                      type="text"
+                      class="form-control form-control-sm bg-secondary text-center"
+                      value={{i.Quntity}} name="UQuntity" 
+                    />
+                   
+                  </div>
+                </td>
+            
+                
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+         
+        </form>
+        </div>
+        
+      </div>
+    </div>
+    <!-- Cart End -->
+  {% endblock %}
+    <!-- Footer Start -->

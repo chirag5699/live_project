@@ -29,8 +29,8 @@ class Listing_data(models.Model):
     Size = [('XS', 'XS'),('S', 'S'),('M', 'M'),('L', 'L'),('XL', 'XL')]
     P_size =models.CharField(choices=Size,max_length=100, blank=True )
     P_Description=models.CharField(max_length=500)
-    seller_id=models.ForeignKey(Seller_data , on_delete=models.CASCADE)
-     
+    P_Categary=models.CharField(max_length=50,null=True)
+    seller_id=models.ForeignKey(Seller_data , on_delete=models.CASCADE,null=True)
     
     def __str__(self):
         return self.P_name 

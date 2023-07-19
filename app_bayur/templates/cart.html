@@ -1,109 +1,124 @@
-{% extends 'hedder_futter.html' %}
+{% extends '2hedder_futter.html' %}
 {%block content%}   
 {% load static %}
-  
-      <!-- Page Header Start -->
-      <div class="container-fluid bg-secondary mb-5">
-          <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-              <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
-              <div class="d-inline-flex">
-                  <p class="m-0"><a href="">Home</a></p>
-                  <p class="m-0 px-2">-</p>
-                  <p class="m-0">Shopping Cart</p>
-              </div>
-          </div>
+
+    <!-- Page Header Start -->
+    <div class="container-fluid bg-secondary mb-5">
+      <div
+        class="d-flex flex-column align-items-center justify-content-center"
+        style="min-height: 300px"
+      >
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
+        <div class="d-inline-flex">
+          <p class="m-0"><a href="">Home</a></p>
+          <p class="m-0 px-2">-</p>
+          <p class="m-0">Shopping Cart</p>
+        </div>
       </div>
-      <!-- Page Header End -->
+    </div>
+    <!-- Page Header End -->
 
-      <!-- Cart Start -->
-      <div class="container-fluid pt-5">
-          <div class="row px-xl-5">
-              <div class="col-lg-8 table-responsive mb-5">
-                  <table class="table table-bordered text-center mb-0">
-                      <thead class="bg-secondary text-dark">
-                          <tr>
-                              <th>Products</th>
-                              <th>Price</th>
-                              <th>Quantity</th>
-                              <th>Total</th>
-                              <th>Remove</th>
-                          </tr>
-                      </thead>
-
-                       <form action="{% url 'Update_cart' %}" method="post">
-                        {% csrf_token %}
-                      <tbody class="align-middle">
-                          {% for i in all_cart%}
-                          <tr>
-                              <td class="align-middle"><img src="{{i.Product_id.Listing_immage.url}}" alt="" style="width: 50px;"> {{ i.Product_id.P_name }}</td>
-                              <td class="align-middle">${{i.Product_id.P_Price}}</td>
-                              <td class="align-middle">
-                                  <div class="input-group quantity mx-auto" style="width: 100px;">
-                                      <div class="input-group-btn">
-                                          <button class="btn btn-sm btn-primary btn-minus" >
-                                          <i class="fa fa-minus"></i>
-                                          </button>
-                                      </div>
-                                      <input type="text" class="form-control form-control-sm bg-secondary text-center" value={{i.Quntity}} 
-                                      name="UQuntity">
-                                      <div class="input-group-btn">
-                                          <button class="btn btn-sm btn-primary btn-plus">
-                                              <i class="fa fa-plus"></i>
-                                          </button>
-                                      </div>
-                                  </div>
-                              </td>
-                              <td class="align-middle">{{i.total}}</td>
-                              <td class="align-middle"><a href="{%  url 'Remove_cart' i.id %}"><i class="fa fa-times"></i></a><button class="btn btn-sm btn-primary"></button></td>
-                          </tr>
-                          {% endfor %}
-                      </tbody>
-                  </table>
-                <button >
-                    <input class="btn btn-primary" type="Submit" value="Update_cart" name="Update_cart">
-                </button>
-            </form>
-           
-                <button><a href="{% url 'continue_shoping' %}">
-                  <input class="btn btn-primary"  type="butten" value="continue_shoping" name="continue_shoping"></a>
-              
-                </button>
+    <!-- Cart Start -->
+    <form action="{% url 'Update_cart' %}" method="post">
+      {% csrf_token %}
+    <div class="container-fluid pt-5">
+      <div class="row px-xl-5">
+        <div class="col-lg-8 table-responsive mb-5">
+          <table class="table table-bordered text-center mb-0">
+            <thead class="bg-secondary text-dark">
+              <tr>
+                <th>image</th>
+                <th>Products</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Remove</th>
+              </tr>
+            </thead>
+            <tbody class="align-middle">
+              {% for i in all_cart %}
+              <tr>
+                <td class="align-right" style="height: 10%; width:10% ;">
+                  <img src="{{i.Product_id.Listing_immage.url}}" alt="" style="width: 70px" />
+                  <!-- <span>{{ i.Product_id.P_name }}</span> -->
+                </td>
+                <td class="align-middle" > {{ i.Product_id.P_name }}</td>
+                <td class="align-middle">${{i.Product_id.P_Price}}</td>
+                <td class="align-middle">
+                  <div
+                    class="input-group quantity mx-auto"
+                    style="width: 100px"
+                    >
+                    <div class="input-group-btn">
+                      <button class="btn btn-sm btn-primary btn-minus">-
+                      </button>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control form-control-sm bg-secondary text-center"
+                      value={{i.Quntity}} name="UQuntity" 
+                    />
+                    <div class="input-group-btn">
+                      <button class="btn btn-sm btn-primary btn-plus">+                    
+                          </button>
+                    </div>
+                  </div>
+                </td>
+            
+                     <td class="align-middle">{{i.total}}</td>
+                              <td class="align-middle"><a href="{%  url 'Remove_cart' i.id %}"><i class="fa fa-times"></i></a></td>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <input class="btn btn-primary" type="submit" value="Update_cart" >
+          <button><a href="{% url 'continue_shoping' %}">continue_shoping          
+          </button>
+        </form>
+        </div>
+        <div class="col-lg-4">
+          <form class="mb-5" action="">
+            <div class="input-group">
+              <input
+              type="text"
+              class="form-control p-4"
+              placeholder="Coupon Code"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-primary">Apply Coupon</button>
+              </div>
             </div>
-              <div class="col-lg-4">
-                  <form class="mb-5" action="">
-                      <div class="input-group">
-                          <input type="text" class="form-control p-4" placeholder="Coupon Code">
-                          <div class="input-group-append">
-                              <button class="btn btn-primary">Apply Coupon</button>
-                          </div>
-                      </div>
-                  </form>
-                  <button  class="btn btn-block btn-primary my-3 py-3"> <a href="{% url 'checkout' %}" >       procesed to checkout</a> </button>
-                  {% comment %} <div class="card border-secondary mb-5">
-                      <div class="card-header bg-secondary border-0">
-                          <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
-                      </div>
-                      <div class="card-body">
-                          <div class="d-flex justify-content-between mb-3 pt-1">
-                              <h6 class="font-weight-medium">final amount</h6>
-                              <h6 class="font-weight-medium">${{total_amount}}</h6>
-                          </div>
-                          <div class="d-flex justify-content-between">
-                              <h6 class="font-weight-medium">Gst(10 %)</h6>
-                              <h6 class="font-weight-medium">${{gst_amount}}</h6>
-                          </div>
-                      </div>
-                      <div class="card-footer border-secondary bg-transparent">
-                          <div class="d-flex justify-content-between mt-2">
-                              <h5 class="font-weight-bold">Total</h5>
-                              <h5 class="font-weight-bold">${{final_amount}}</h5>
-                            </div>
-                            <button class="btn btn-block btn-primary my-3 py-3"> <a href="{% url 'checkout' %}"> procesed to checkout</a> </button>
-                      </div>
-                  </div> {% endcomment %}
+            <div class="card border-secondary mb-5">
+              <div class="card-header bg-secondary border-0">
+                <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
               </div>
+              <div class="card-body">
+                <div class="d-flex justify-content-between mb-3 pt-1">
+                  <h6 class="font-weight-medium">final amount</h6>
+                  <h6 class="font-weight-medium">{{total_amount}}</h6>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <h6 class="font-weight-medium">Shipping</h6>
+                  <h6 class="font-weight-medium">{{Shipping_amount}}</h6>
+                </div>
+              </div>
+            </form>
+            <div class="card-footer border-secondary bg-transparent">
+              <div class="d-flex justify-content-between mt-2">
+                <h5 class="font-weight-bold">Total</h5>
+                <h5 class="font-weight-bold">{{final_amount}}</h5>
+              </div>
+              <a href="{% url 'checkout' %}">
+                <input class="btn btn-block btn-primary my-3 py-3"  type="button" value="procesed to checkout" name="procesed to checkout"></a>
+              {% comment %} <button class="btn btn-block btn-primary my-3 py-3">
+                Proceed To Checkout
+              </button> {% endcomment %}
+            </div>
           </div>
+        </div>
       </div>
-     
-{% endblock %}
-   
+    </div>
+    <!-- Cart End -->
+  {% endblock %}
+    <!-- Footer Start -->

@@ -1,4 +1,4 @@
-{% extends 'hedder_futter.html' %}
+{% extends '2hedder_futter.html' %}
 {% block content %}
 {% load static %}
 <!-- Shop Detail Start -->
@@ -74,28 +74,12 @@
           {%endfor%}
         
       </div>
-    {% comment %} <div class="d-flex align-items-center mb-4 pt-2" style="width: 300px;">
-            <div class="input-group quantity mr-3" style="width: 130px">
-              <div class="input-group-btn">
-                <button class="btn btn-primary btn-minus" >
-                  <i class="fa fa-minus"></i>
-                </button>
-              </div>
-              <h1 class="form-control bg-secondary text-center">
-               
-              </h1>
-              <div class="input-group-btn">
-                <button class="btn btn-primary btn-plus">
-                  <i class="fa fa-plus"></i>
-                </button>
-              </div>
-            </div>
-      </div>
-        {% endcomment %}
-    
-            <button  class="btn btn-primary px-3" >
+      {% if one_product.P_Quntity == 0 %}
+      <p>Sold Out</p>
+              <input type="submit" value="Add To Cart" disabled>
+             {% else %}
               <input type="submit" value="Add To Cart">
-             </button>
+             {%endif%}
           <div class="d-flex pt-2">
             <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
             <div class="d-inline-flex">
@@ -117,62 +101,12 @@
     </div>
   </form>
   </div>
-  <div class="row px-xl-5">
-    <div class="col">
-      <div class="nav nav-tabs justify-content-center border-secondary mb-4">
-        <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1">Description</a>
-        <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-2">Information</a>
-        <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Reviews (0)</a>
-      </div>
-      <div class="tab-content">
-        <div class="tab-pane fade show active" id="tab-pane-1">
-        <p>
-          <h4 class="mb-3">{{one_product.P_Description}}</h4>
-        </p>
-   </form>
-
-        </div>
-      </div>
-      <div class="tab-pane fade" id="tab-pane-3">
-        <div class="row">
-          <div class="col-md-6">
-            <h4 class="mb-4">1 review for "Colorful Stylish Shirt"</h4>
-            <div class="media mb-4">
-              <img src="{% static 'img/user.jpg'%}" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px" />
-              <div class="media-body">
-
-                <form>
-                  <div class="form-group">
-                    <label for="message">Your Review *</label>
-                    <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="name">Your Name *</label>
-                    <input type="text" class="form-control" id="name" />
-                  </div>
-                  <div class="form-group">
-                    <label for="email">Your Email *</label>
-                    <input type="email" class="form-control" id="email" />
-                  </div>
-                  <div class="form-group mb-0">
-                    <input type="submit" value="Leave Your Review" class="btn btn-primary px-3" />
-                    <!-- Shop Detail End -->
-                  </div>
-                </form>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 </div>
+<p>{{one_product.P_Description}}</p>
 
-
-<!-- Products Start -->
-<div class="container-fluid py-5">
+{% comment %} <!-- Products Start -->
+<div class="container-fluid py-5"> 
       
       <div class="text-center mb-4">
         <h2 class="section-title px-5">
@@ -283,9 +217,16 @@
               >
                 <a href="" class="btn btn-sm text-dark p-0">
                   <i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                  {% if one_product.P_Quntity == 0 %}
+                  <button disabled>
                   <a href="{% url 'Add_To_Cart' one_product.id %}" class="btn btn-sm text-dark p-0"
-                  ><i class="fas fa-shopping-cart text-primary mr-1"><button>Add
+                  ><i class="fas fa-shopping-cart text-primary mr-1">Add
                   To Cert</button> </i></a>
+                  {% else %}
+                  <a href="{% url 'Add_To_Cart' one_product.id %}" class="btn btn-sm text-dark p-0"
+                  ><i class="fas fa-shopping-cart text-primary mr-1"><button >Add
+                  To Cert</button> </i></a>
+                  {% endif %}
               </div>
             </div>
          <div class="card product-item border-0">
@@ -319,6 +260,6 @@
         </div>
       </div>
     </div>
-<!-- Products End -->
+<!-- Products End --> {% endcomment %}
 
 {% endblock %}

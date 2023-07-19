@@ -1,0 +1,147 @@
+{% extends '2hedder_futter.html' %}
+{%block content%}   
+{% load static %}
+
+<div class="container-fluid bg-secondary mb-5">
+  <div
+    class="d-flex flex-column align-items-center justify-content-center"
+    style="min-height: 300px"
+  >
+    <h1 class="font-weight-semi-bold text-uppercase mb-3">Payment</h1>
+    <div class="d-inline-flex">
+      <p class="m-0"><a href="">Home</a></p>
+      <p class="m-0 px-2">-</p>
+      <p class="m-0">Payment</p>
+    </div>
+  </div>
+</div>
+<div class="col-lg-4">
+          <div class="card border-secondary mb-5">
+            <div class="card-header bg-secondary border-0">
+              <h4 class="font-weight-semi-bold m-0">Order Total</h4>
+            </div>
+            <div class="card-body">
+             <span style="display: flex;  text-align:center"> 
+              <h5 class="font-weight-medium mb-3" style="width: 100px; margin: 0 5px;">Products</h5>
+           <h5 class="font-weight-medium mb-3" style="width: 100px; margin: 0 5px;">qun</h5> 
+              <h5 class="font-weight-medium mb-3" style="width: 100px; margin: 0 5px;">price</h5></span>
+              {% for i in all_cart %}
+              <div class="d-flex justify-content-between">
+                <p>{{i.Product_id.P_name }}</p>
+                <p>{{i.Quntity}}</p>
+                <p>{{i.Product_id.P_Price}}</p>
+              </div>
+              {% endfor %}
+
+              <hr class="mt-0" />
+              <div class="d-flex justify-content-between mb-3 pt-1">
+                <h6 class="font-weight-medium">Subtotal</h6>
+                <h6 class="font-weight-medium">{{total_amount}}</h6>
+              </div>
+              <div class="d-flex justify-content-between">
+                <h6 class="font-weight-medium">Shipping</h6>
+                <h6 class="font-weight-medium">{{Shipping_amount}}</h6>
+              </div>
+            </div>
+            <div class="card-footer border-secondary bg-transparent">
+              <div class="d-flex justify-content-between mt-2">
+                <h5 class="font-weight-bold">Total</h5>
+                <h5 class="font-weight-bold">{{final_amount}}</h5>
+              </div>
+            </div>
+          </div>
+          <div class="card border-secondary mb-5">
+            <div class="card-header bg-secondary border-0">
+              <h4 class="font-weight-semi-bold m-0">Payment</h4>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    name="payment"
+                    id="paypal"
+                  />
+                  <label class="custom-control-label" for="paypal"
+                    >Paypal</label
+                  >
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    name="payment"
+                    id="directcheck"
+                  />
+                  <label class="custom-control-label" for="directcheck"
+                    >Direct Check</label
+                  >
+                </div>
+              </div>
+              <div class="">
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    name="payment"
+                    id="banktransfer"
+                  />
+                  <label class="custom-control-label" for="banktransfer"
+                    >Bank Transfer</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="card-footer border-secondary bg-transparent">
+               <button>
+               <input class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" id="pay-btn" type="button" value="payment" name="payment" 
+              ></a> 
+            </form>
+              </button>
+              
+             {% comment %} <button><input  class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" id="pay-btn" type="submit" value="Place Order" name=" Place Order" >
+              </button> {% endcomment %}
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Checkout End -->
+   <!-- =================  razorpay =================================== -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    var options = {
+       
+      // Enter the Key ID generated from the Dashboard
+      key: "rzp_test_K7PbWE5f4Jh9ge",
+       
+      // Amount is in currency subunits.
+      // Default currency is INR. Hence,
+      // 50000 refers to 50000 paise
+      amount: "{{final_amount}}"*100,
+      currency: "INR",
+       
+      // Your/store name.
+      name: "Dj Razorpay",
+       
+      // Pass the `id` obtained in the response of Step 1
+      order_id: "{{order_id}}",
+      callback_url: 'paymenthandler/'
+    };
+     
+    // initialise razorpay with the options.
+    var rzp1 = new Razorpay(options);
+     
+    // add event listener to the payment button.
+    document.getElementById("pay-btn").onclick = function (e) {
+      rzp1.open();
+      e.preventDefault();
+    };
+  </script>
+
+{% endblock %}

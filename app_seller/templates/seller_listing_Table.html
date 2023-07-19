@@ -88,6 +88,7 @@
                         <th scope="col">P_Quntity</th>
                         <th scope="col">P_Color</th>
                         <th scope="col">P_size</th>
+                        <th scope="col">categary</th>
                         <th scope="col">update</th>
                         <th scope="col">Delete</th>
                         <th scope="col">P_Description</th>
@@ -104,9 +105,10 @@
                         <td>{{i.P_name}}</td>
                         <td>{{i.P_Price}}</td>
                       <td>{{i.P_sellprice}}</td>
-                        <td>{{i.P_Quntity}}</td>
-                        <td>{{i.P_Color}}</td>
-                        <td>{{i.P_size}}</td>
+                      <td>{{i.P_Quntity}}</td>
+                      <td>{{i.P_Color}}</td>
+                      <td>{{i.P_size}}</td>
+                      <td>{{i.P_Categary}}</td>
                         <td><a href="{% url 'Seller_update_listing' i.id %}">update</a></td>
                         <td><a href="{% url 'Seller_delete_listing' i.id %}">Delete</a></td>
                         <td>{{i.P_Description}}</td>

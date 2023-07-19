@@ -7,8 +7,8 @@
                 <div class="mb-4">
                     <div class="container-fluid pt-">
        
-                    {% comment %} <p style="font-size:48;color:black">{{msg}}  <br>  {{msg2}}</p> {% endcomment %}
-                    <form action="{% url 'seller_Login' %}" method="Post" >
+                 <p style="font-size:48;color:black">{{msg}}  <br>  {{msg2}}</p>
+                    <form action="{% url 'seller_Login' %}" method="post" >
                       {% csrf_token %}
                     <h2 class="font-weight-semi-bold mb-4"> Seller Login</h2>
                     <div class="row">

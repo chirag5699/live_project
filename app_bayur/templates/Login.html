@@ -1,4 +1,4 @@
-{% extends 'hedder_futter.html' %}
+{% extends '2hedder_futter.html' %}
 {%block content%}   
  {% load static %}
     <div class="container-fluid pt-">
@@ -7,7 +7,7 @@
                 <div class="mb-4">
                     <div class="container-fluid pt-">
        
-                    <p style="font-size:48;color:red">{{msg}}  <br>  {{msg2}}</p>
+                    <p style="font-size:48;color:red">{{msg}}</p>
                     <form action="{% url 'Login' %}" method="Post" >
                       {% csrf_token %}
                     <h2 class="font-weight-semi-bold mb-4">Login</h2>
@@ -31,7 +31,7 @@
                         </div>
                             <div class="col-md-8 form-group text-center">
                             <input class="btn btn-primary" type="Submit" value="Login" name="sing in">
-                            </div>
+                        </div>
                     </div>
                     </form>
                         

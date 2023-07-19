@@ -1,0 +1,133 @@
+{% extends '2hedder_futter.html' %}
+{%block content%}   
+{% load static %}
+
+<div class="container-fluid bg-secondary mb-5">
+  <div
+    class="d-flex flex-column align-items-center justify-content-center"
+    style="min-height: 300px"
+  >
+    <h1 class="font-weight-semi-bold text-uppercase mb-3">Order Details</h1>
+    <div class="d-inline-flex">
+      <p class="m-0"><a href="">Home</a></p>
+      <p class="m-0 px-2">-</p>
+      <p class="m-0">Order Details</p>
+    </div>
+  </div>
+</div>
+
+
+{% comment %} <div class="container-fluid pt-">
+  <div class="row px-xl-6">
+    <div class="col-lg-9">
+      <div class="mb-5">
+        
+        <!-- Table start -->
+        
+        <table class="table">
+          <thead class="thead-dark">
+                <tr>
+                  <th scope="col">immage</th>
+                  <th scope="col">Productname</th>
+                  <th scope="col">quntity</th>
+                
+                </tr>
+                {%  for i in all_cart %}
+                      
+                <tr>
+                     
+                    <td><img src="{{i.Product_id.Listing_immage.url}}" alt="" height="50px" width="50px"></td> 
+                     <td>{{i.Product_id.P_name}}</td>
+                     <td>{{i.Quntity}}</td>
+             
+                  {% endfor %}
+              </thead>
+              <tbody>
+              </table>
+              </div>
+            </div>
+            </div>
+            </div>           
+          </div>
+              {% comment %} <a href="{% url 'payment' %}">
+                <input class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" type="button" value=" Place Order" name=" Place Order" 
+               ></a>
+            </div>  {% endcomment %}
+            {% comment %} <div class="container-fluid pt-">
+              <div class="row px-xl-6">
+                <div class="col-lg-9">
+                  <div class="mb-5">
+                    
+            <table class="table">
+              <thead class="thead-dark" >
+                    <tr>
+                      <th scope="col"> your mobile No</th>
+                      <th scope="col"> your address</th>
+                    </tr>      
+                    <tr> 
+                         <td>{{one_data.mobile_no}}</td>
+                         <td>{{one_data.address1}}<br>{{one_data.address2}}<br>{{one_data.city}},{{one_data.State}},{{one_data.Country}},{{one_data.ZIPCode}}</td>   
+                       </tr>
+                  </thead>
+                  <tbody>
+                  </table>
+                  </div>
+                </div>
+                </div>
+                </div>           
+              </div>
+              <a href="{% url 'payment' %}">
+                <input class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" type="button" value=" Place Order" name=" Place Order" 
+               ></a> {% endcomment %}
+
+
+
+               <div class="row px-xl-6">
+                <div class="col-lg-6">
+                  <div class="mb-5">
+                    
+                    <!-- Table start -->
+                    
+                    <table class="table">
+                      <thead class="thead-dark">
+                            <tr>
+                              <th scope="col">immage</th>
+                              <th scope="col">Productname</th>
+                              <th scope="col">quntity</th>
+                            
+                            </tr>
+                            {%  for i in all_cart %} 
+                            <tr>    
+                                <td><img src="{{i.Product_id.Listing_immage.url}}" alt="" height="50px" width="50px"></td> 
+                                 <td>{{i.Product_id.P_name}}</td>
+                                 <td>{{i.Quntity}}</td>
+                              {% endfor %}
+                          </thead>
+                          <tbody>
+                          </table>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="mb-5">
+                    <table class="table">
+                      <thead class="thead-dark" >
+                            <tr>
+                              <th scope="col"> your mobile No</th>
+                              <th scope="col"> your address</th>
+                            </tr>      
+                            <tr> 
+                                 <td>{{one_data.mobile_no}}</td>
+                                 <td>{{one_data.address1}}<br>{{one_data.address2}}<br>{{one_data.city}},{{one_data.State}},{{one_data.Country}},{{one_data.ZIPCode}}</td>   
+                               </tr>
+                          </thead>
+                          <tbody>
+                          </table>
+                          </div>
+                        </div>
+                        </div>
+                        </div>  
+
+                        <a href="{% url 'payment' %}">
+                          <input class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" type="button" value=" Place Order" name=" Place Order" 
+                         ></a>
+{% endblock %}
